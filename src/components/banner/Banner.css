@@ -1,0 +1,9 @@
+.banner_img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.banner_bagraund{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
