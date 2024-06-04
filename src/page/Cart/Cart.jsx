@@ -16,7 +16,7 @@ const Cart = () => {
           <button>
             <CiHeart />
           </button>
-          <button onClick={() => dispatch(removeItem(el))}>
+          <button onClick={() => dispatch(removeItem(el.id))}>
             <CiCircleRemove />
           </button>
         </div>
@@ -26,11 +26,11 @@ const Cart = () => {
         <div className="cart_count">
           <button 
           onClick={
-            () => dispatch(incrementquantity(el))
+            () => dispatch(incrementquantity(el.id))
           }>+</button>
           <button>{el.quantity}</button>
           <button
-          onClick={() => dispatch(decrementquantity(el))}>-</button>
+          onClick={() => dispatch(decrementquantity(el.id))}>-</button>
         </div>
       </div>
     </div>
