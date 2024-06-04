@@ -13,14 +13,16 @@ const Navbar = () => {
       <header>
         <div className="container navbar_wrapper">
           <div className="logo_wrapper">
-            <img src={imga} alt="" />
+           <NavLink to={"/"}> <img src={imga} alt="" /></NavLink>
           </div>
           <nav className="navbar">
             <input type="text" placeholder="Search" />
             <div className="icons_wrapper">
               <IoSearch className="icon_search" />
               <FaRegUser className="icon" />
-              <FaRegHeart className="icon" />
+             <NavLink to={'/like'} className="icon">
+             <FaRegHeart className="icon" />
+             </NavLink>
               <NavLink to={"/cart"} className="icon">
                 <FiShoppingCart className="icon" />
               </NavLink>

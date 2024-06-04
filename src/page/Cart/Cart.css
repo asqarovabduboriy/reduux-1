@@ -33,6 +33,14 @@
     object-fit: contain;
 }
 
+.cart_img h2{
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
 .cart_price{
     display: flex;
     justify-content: space-between;
@@ -54,4 +62,19 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-top: 40px;
+}
+
+@media screen and (max-width: 999px) {
+    .cart_wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 840px) {
+    .cart_wrapper{
+        grid-template-columns: repeat(1, 1fr);
+
+
+    }
+    
 }

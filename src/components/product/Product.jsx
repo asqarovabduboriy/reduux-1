@@ -10,6 +10,7 @@ const Product = () => {
   const { data, loading } = UseEfect("products?limit=8");
 
   const dispatch = useDispatch();
+
   const like = useSelector((state) => state.wishlist);
   const addToCart = useSelector((state) => state.cart);
   console.log(addToCart);

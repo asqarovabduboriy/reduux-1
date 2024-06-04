@@ -18,22 +18,26 @@ export const addToCart = () => {
     }
 }
 
-export const removeItem = () => {
+export const removeItem = (id) => {
     return {
-        type: REMOVECART
+        type: REMOVECART,
+        payload: id
+
     }
 }
 
-export const incrementquantity = () => {
+export const incrementquantity = (id) => {
     return {
-        type: INCREMENTQUANTITY
+        type: INCREMENTQUANTITY,
+        payload: id
     }
 }
 
 
-export const decrementquantity = () => {
+export const decrementquantity = (id) => {
     return {
-        type: DECREMENTQUANTITY
+        type: DECREMENTQUANTITY,
+        payload: id
     }
 }
 

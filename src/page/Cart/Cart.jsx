@@ -2,9 +2,26 @@ import React from "react";
 import "./Cart.css";
 import { useSelector, useDispatch } from "react-redux";
 import { CiHeart, CiCircleRemove } from "react-icons/ci";
-import {incrementquantity, decrementquantity, removeItem} from '../../lib/reducer/AddCart.js'
+import { FaHeart } from "react-icons/fa";
+import {
+  incrementquantity,
+  decrementquantity,
+  removeItem,
+} from "../../lib/action/action";
 
 const Cart = () => {
+  const handleincrement = (id) => {
+    dispatch(incrementquantity(id));
+  };
+  const handledecrement = (id) => {
+    dispatch(decrementquantity(id));
+  };
+  const handleRemove = (id) => {
+    dispatch(removeItem(id));
+  };
+
+  const like = useSelector((state) => state.wishlist);
+
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   let carts = cart?.cart?.map((el) => (
@@ -13,24 +30,33 @@ const Cart = () => {
         <img src={el.images[0]} alt="" />
         <h2>{el.title}</h2>
         <div className="cart_icon">
-          <button>
-            <CiHeart />
+          <button onClick={()=> dispatch({type: "TOGLELIKE", payload: el})}>
+           {
+             like.wishlist.some((item) => item.id === el.id) ? (
+               <FaHeart style={{ color: "red" }} />
+             ) : (
+               <CiHeart />
+             )
+           }
           </button>
-          <button onClick={() => dispatch(removeItem(el.id))}>
+          <button onClick={() => handleRemove(el)}>
             <CiCircleRemove />
           </button>
         </div>
       </div>
       <div className="cart_price">
         <p>${el.price}</p>
+        <p>${(el.price * el.quantity).toFixed(2)}</p>
         <div className="cart_count">
-          <button 
-          onClick={
-            () => dispatch(incrementquantity(el.id))
-          }>+</button>
+          <button disabled={el.quantity === 10} onClick={() => handleincrement(el)}>+</button>
+
           <button>{el.quantity}</button>
           <button
-          onClick={() => dispatch(decrementquantity(el.id))}>-</button>
+            disabled={el.quantity === 1}
+            onClick={() => handledecrement(el)}
+          >
+            -
+          </button>
         </div>
       </div>
     </div>
@@ -40,9 +66,7 @@ const Cart = () => {
   return (
     <>
       <div className="container">
-        <div className="cart_wrapper">
-                {carts}
-        </div>
+        <div className="cart_wrapper">{carts}</div>
       </div>
     </>
   );
