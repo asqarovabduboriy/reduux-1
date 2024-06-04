@@ -11,7 +11,8 @@ const Product = () => {
 
   const dispatch = useDispatch();
   const like = useSelector((state) => state.wishlist);
-  console.log(like.wishlist);
+  const addToCart = useSelector((state) => state.cart);
+  console.log(addToCart);
 
   let products = data?.products.map((el) => (
     <div className="product" key={el.id}>
@@ -31,7 +32,7 @@ const Product = () => {
             }
           </button>
 
-          <button>
+          <button onClick={() => dispatch({ type: "ADDCART", payload: el })}>
             <FiShoppingCart />
           </button>
         </div>

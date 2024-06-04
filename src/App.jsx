@@ -1,15 +1,18 @@
 import './App.css'
-import Banner from './components/banner/Banner'
 import Navbar from './components/navbar/Navbar'
-import Product from './components/product/Product'
+import { Route, Routes,  } from 'react-router-dom'
+import Cart from './page/Cart/Cart'
+import Home from './page/home/Home'
 
 function App() {
 
   return (
     <>
     <Navbar/>
-    <Banner/>
-    <Product/>
+    <Routes>
+      <Route path="/cart" element={<Cart/>}/>
+      <Route path="/" element={<Home/>}/>
+    </Routes>
     </>
   )
 }
